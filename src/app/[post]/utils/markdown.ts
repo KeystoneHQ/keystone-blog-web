@@ -1,7 +1,16 @@
 import { Marked, marked, Renderer } from 'marked';
 
-const slugify = (text: string): string => {
+const stripMarkdown = (text: string): string => {
   return text
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/(\*|_)(.*?)\1/g, '$2')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/<[^>]*>/g, '');
+}
+
+const slugify = (text: string): string => {
+  return stripMarkdown(text)
     .toLowerCase()
     .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
     .replace(/^-+|-+$/g, '');
@@ -10,7 +19,8 @@ const slugify = (text: string): string => {
 const renderer = new Renderer();
 
 renderer.heading = function(text, depth) {
-  const slug = slugify(text); 
+  const cleanText = text.replace(/<[^>]*>/g, '');
+  const slug = slugify(cleanText); 
   return `<h${depth} id="${slug}">${text}</h${depth}>`;
 };
 
@@ -45,10 +55,11 @@ export const getHeadings = (markdownText: string): HeadingItem[] => {
   marked.walkTokens(tokens, (token) => {
     if (token.type === 'heading') {
       const depth = shouldIncreaseDepth ? token.depth + 1 : token.depth;
-      const slug = slugify(token.text);
+      const cleanText = stripMarkdown(token.text); 
+      const slug = slugify(cleanText);
 
       headings.push({
-        text: token.text,
+        text: cleanText,
         depth: depth,
         slug: slug
       });
