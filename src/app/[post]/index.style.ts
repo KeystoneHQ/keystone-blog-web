@@ -258,6 +258,10 @@ export const SummaryContent = styled.div`
   line-height: 28px;
   letter-spacing: 0.04em;
   margin-top: 12px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `
 
 export const BodyText = styled.div`
