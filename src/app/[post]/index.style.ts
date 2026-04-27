@@ -384,6 +384,36 @@ export const BodyText = styled.div`
   ul {
     padding-left: 16px;
   }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  center {
+    font-family: Mont;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 2%;
+  }
+  thead {
+    background-color: #f5f7fc;
+  }
+  th,
+  td {
+    border: 1px solid #d8dbe7;
+    padding: 10px 12px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  th {
+    font-weight: 700;
+  }
   li {
     font-size: 18px;
     line-height: 28px;
