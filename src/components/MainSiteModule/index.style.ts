@@ -99,14 +99,25 @@ export const Explore = styled.a`
   border: 1.5px solid var(--button-border-color);
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 12px 18px 12px 28px;
   text-decoration: none;
   color: var(--banner-bg-color);
   border-image: var(--gd-primary-color) 1;
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
   &:hover {
     background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
     color: var(--hover-text-color);
+
+    svg {
+      transform: translateX(4px);
+    }
   }
+
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
