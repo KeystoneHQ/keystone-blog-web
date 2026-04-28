@@ -49,6 +49,7 @@ const TableOfContents = ({ headings }: { headings: HeadingItem[] }) => {
             <TableOfContentsLink
               href={`#${heading.slug}`} 
               onClick={(e) => handleClick(e, heading.slug)}
+              depth={heading.depth}
             >
               {heading.text}
             </TableOfContentsLink>
@@ -89,29 +90,20 @@ export default function Content({ article, postModel, minutesToRead }: any) {
           />
         </picture>
       </TopBanner>
-      <BackToHomeAndShare>
-        <BackToHome href="/">
-          <picture>
-            <img
-              src="/left-arrow.svg"
-              className="default"
-              alt=""
-              loading="lazy"
-            />
-            <img
-              src="/left-arrow-active.svg"
-              className="active"
-              alt=""
-              loading="lazy"
-            />
-          </picture>
-          <span>Blog Home</span>
-        </BackToHome>
-        <ShareMedia post={article} />
-      </BackToHomeAndShare>
       <BodyContainer>
         {isMobile ? null : <TableOfContents headings={postModel.headings} />}
         <ArticleContainer>
+          <BackToHomeAndShare>
+            <BackToHome href="/">
+              <span>Blog Home</span>
+            </BackToHome>
+            <picture>
+              <img src="/banner-arrow.svg" alt="banner-arrow" width={24} height={24} />
+            </picture>
+            <BackToHome href={`categories/${postModel.category.toLowerCase().split(' ').join('-')}`}>
+              <span>{postModel.category}</span>
+            </BackToHome>
+          </BackToHomeAndShare>
           {postModel.summary && (
             <Summary>
               <SummaryTitle>Summary</SummaryTitle>
@@ -125,9 +117,10 @@ export default function Content({ article, postModel, minutesToRead }: any) {
               }}
             />
           </BodyText>
+          <MainSiteModule />
         </ArticleContainer>
+        <ShareMedia post={article} />
       </BodyContainer>
-      <MainSiteModule />
     </PostContainer>
   )
 }

@@ -122,11 +122,18 @@ const HoverStyle = css`
 `
 export const BackToHome = styled(Link)`
   ${HoverStyle}
+  font-family: Neue Kaine;
+  font-weight: 733;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: var(--fg-subtle-color);
   .active {
     left: 0;
   }
   span {
-    background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
+    background: var(--fg-subtle-color);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     width: fit-content;
@@ -140,12 +147,17 @@ export const BackToHome = styled(Link)`
 `
 
 export const Share = styled.div`
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 2%;
   ${HoverStyle}
   .active {
     right: 0;
   }
   span {
-    color: var(--fg-subtle-color);
+    color: var(--fg-muted-color);
   }
   &:hover {
     span {
@@ -157,15 +169,14 @@ export const Share = styled.div`
 
 export const BackToHomeAndShare = styled.div`
   padding: 24px 0;
-  width: 1220px;
-  margin: 40px auto;
-  border-bottom: 1px solid var(--category-border-color);
+  margin: 40px;
   font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 12px;
   img {
     width: 24px;
     height: 24px;
@@ -189,6 +200,7 @@ export const TableOfContentsContainer = styled.div`
   height: fit-content;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+  margin-top: 156px;
 `
 export const TableOfContentsUl = styled.div`
   width: 100%;
@@ -202,15 +214,28 @@ export const TableOfContentsLi = styled.div<{ depth?: number }>`
   color: ${(props) => (props.depth === 2 ? 'var(--fg-primary-color)' : 'var(--fg-subtle-color)')};
 `
 
-export const TableOfContentsLink = styled.a`
+export const TableOfContentsLink = styled.a<{ depth?: number }>`
   display: block;
   text-decoration: none;
-  font-size: 18px;
-  line-height: 28px;
   padding: 6px 12px;
   border-radius: 4px;
   transition: all 0.2s ease;
-  font-family: var(--font-open-sans);
+  ${(props) => {
+    return props.depth === 2 ?
+      css`font-family: Neue Kaine;
+          font-weight: 650;
+          font-size: 18px;
+          line-height: 26px;
+          letter-spacing: 0.02em;
+          `
+      :
+      css`font-family: Open Sans;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          `
+  }}
 
   &:hover {
     color: var(--bd-primary-color, #1F5AFF);
@@ -223,6 +248,7 @@ export const BodyContainer = styled.div`
   justify-content: flex-start;
   max-width: 1580px;
   margin: 0 auto;
+  gap: 100px;
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
   }
@@ -246,19 +272,25 @@ export const Summary = styled.div`
 `
 
 export const SummaryTitle = styled.h2`
-  font-weight: 733;
-  font-size: 22px;
-  line-height: 32px;
+  font-family: Neue Kaine;
+  font-weight: 650;
+  font-style: Semi Bold;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 2%;
+  color: #5D657A;
+  margin-bottom: 10px;
 `
 
 export const SummaryContent = styled.div`
   font-family: Open Sans;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 28px;
-  letter-spacing: 0.04em;
-  margin-top: 12px;
   white-space: pre-wrap;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 2%;
+  color: #5D657A;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 16px;
     line-height: 24px;
@@ -267,6 +299,10 @@ export const SummaryContent = styled.div`
 
 export const BodyText = styled.div`
   font-family: var(--font-open-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
   width: 880px;
   margin: 20px 40px;
   color: var(--banner-bg-color);
@@ -289,7 +325,6 @@ export const BodyText = styled.div`
   }
 
   h4,
-  p,
   blockquote,
   ul,
   fieldset,
@@ -309,6 +344,10 @@ export const BodyText = styled.div`
   h6 {
     font-size: 0.75em;
     margin: 1.67em 0;
+  }
+
+  hr {
+    display: none;
   }
 
   a {
@@ -334,18 +373,24 @@ export const BodyText = styled.div`
     }
   }
   h2 {
-    font-size: 24px;
-    font-weight: 733;
-    line-height: 36px;
+    font-family: var(--font-neue-kaine);
+    font-weight: 650;
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: 0;
+    margin: 28px 0 0 0;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 18px;
       line-height: 28px;
     }
   }
   h3 {
+    font-family: var(--font-neue-kaine);
+    font-weight: 650;
     font-size: 18px;
-    font-weight: 733;
-    line-height: 28px;
+    line-height: 26px;
+    letter-spacing: 0.02em;
+    margin: 20px 0 0 0;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 14px;
       line-height: 22px;
@@ -353,13 +398,21 @@ export const BodyText = styled.div`
   }
   p {
     font-family: var(--font-open-sans);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 28px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    margin: 20px 0;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 16px;
       line-height: 24px;
     }
+  }
+  h2 + p {
+    margin-top: 28px;
+  }
+  h3 + p {
+    margin-top: 20px;
   }
   pre {
     padding: 12px;
@@ -376,6 +429,7 @@ export const BodyText = styled.div`
     width: 100%;
     padding: 0 180px;
     background-color: white;
+    margin: 20px 0;
     @media ${DEVICE_QUERY_MOBILE} {
       width: 100%;
       padding: 0;
@@ -468,4 +522,11 @@ export const BodyText = styled.div`
       }
     }
   }
+`
+
+export const ShareMediaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 156px;
 `
