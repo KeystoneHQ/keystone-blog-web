@@ -51,11 +51,13 @@ export const Links = styled.div`
   a .hovered {
     display: none;
   }
-  a:hover {
-    img {
+
+  ${MainSiteInfo}:hover & {
+    a img {
       display: none;
     }
-    img.hovered {
+
+    a img.hovered {
       display: inline-block;
     }
   }

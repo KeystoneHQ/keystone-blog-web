@@ -312,38 +312,41 @@ export const BodyText = styled.div`
     margin: 0 auto;
   }
 
+  --md-space-xxs: 8px;
+  --md-space-xs: 12px;
+  --md-space-sm: 16px;
+  --md-space-md: 24px;
+  --md-space-lg: 32px;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
   h1 {
-    margin: 0.67em 0;
-  }
-
-  h2 {
-    margin: 0.75em 0;
-  }
-
-  h3 {
-    margin: 0.83em 0;
+    margin: var(--md-space-lg) 0 var(--md-space-md);
   }
 
   h4,
-  blockquote,
-  ul,
   fieldset,
   form,
-  ol,
   dl,
   dir,
   menu {
-    margin: 1.12em 0;
+    margin: var(--md-space-sm) 0;
   }
 
   h5 {
     font-size: 0.83em;
-    margin: 1.5em 0;
+    margin: var(--md-space-sm) 0 var(--md-space-xs);
   }
 
   h6 {
     font-size: 0.75em;
-    margin: 1.67em 0;
+    margin: var(--md-space-sm) 0 var(--md-space-xs);
   }
 
   hr {
@@ -378,10 +381,11 @@ export const BodyText = styled.div`
     font-size: 22px;
     line-height: 32px;
     letter-spacing: 0;
-    margin: 28px 0 0 0;
+    margin: var(--md-space-lg) 0 var(--md-space-sm);
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 18px;
       line-height: 28px;
+      margin: var(--md-space-md) 0 var(--md-space-xs);
     }
   }
   h3 {
@@ -390,10 +394,11 @@ export const BodyText = styled.div`
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 0.02em;
-    margin: 20px 0 0 0;
+    margin: var(--md-space-md) 0 var(--md-space-xs);
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 14px;
       line-height: 22px;
+      margin: 20px 0 var(--md-space-xxs);
     }
   }
   p {
@@ -402,19 +407,17 @@ export const BodyText = styled.div`
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0.02em;
-    margin: 20px 0;
+    margin: 0 0 var(--md-space-sm);
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 16px;
       line-height: 24px;
     }
   }
-  h2 + p {
-    margin-top: 28px;
-  }
-  h3 + p {
-    margin-top: 20px;
+  p + p {
+    margin-top: 0;
   }
   pre {
+    margin: var(--md-space-sm) 0;
     padding: 12px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -429,19 +432,32 @@ export const BodyText = styled.div`
     width: 100%;
     padding: 0 180px;
     background-color: white;
-    margin: 20px 0;
+    margin: var(--md-space-sm) 0;
     @media ${DEVICE_QUERY_MOBILE} {
       width: 100%;
       padding: 0;
     }
   }
   ul {
-    padding-left: 16px;
+    margin: var(--md-space-sm) 0;
+    padding-left: 48px;
+    list-style-type: disc;
+  }
+  ol {
+    margin: var(--md-space-sm) 0;
+    padding-left: 48px;
+  }
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin: var(--md-space-xxs) 0;
+    padding-left: 32px;
   }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: var(--md-space-sm) 0;
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -471,16 +487,26 @@ export const BodyText = styled.div`
   li {
     font-size: 18px;
     line-height: 28px;
+    margin: var(--md-space-xxs) 0;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 16px;
       line-height: 24px;
     }
   }
+  li > p {
+    margin: var(--md-space-lg) 0;
+  }
   blockquote {
     background-color: var(--quote-bg-color);
     border-left: solid 2px var(--quote-border-color);
     padding: 20px 32px;
-    margin: 20px 0 0 0;
+    margin: var(--md-space-sm) 0;
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
     p {
       margin: 0;
     }
