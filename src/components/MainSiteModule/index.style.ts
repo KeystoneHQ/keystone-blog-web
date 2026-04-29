@@ -52,12 +52,12 @@ export const Links = styled.div`
     display: none;
   }
 
-  ${MainSiteInfo}:hover & {
-    a img {
+  :hover {
+    img {
       display: none;
     }
 
-    a img.hovered {
+    img.hovered {
       display: inline-block;
     }
   }
@@ -104,8 +104,9 @@ export const Explore = styled.a`
   gap: 6px;
   padding: 12px 18px 12px 28px;
   text-decoration: none;
-  color: var(--banner-bg-color);
   border-image: var(--gd-primary-color) 1;
+  background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
+  color: var(--hover-text-color);
 
   svg {
     transition: transform 0.2s ease;
