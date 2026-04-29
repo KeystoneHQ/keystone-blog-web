@@ -98,7 +98,7 @@ export default function Content({ article, postModel, minutesToRead }: any) {
               <span>Blog Home</span>
             </BackToHome>
             <picture>
-              <img src="/banner-arrow.svg" alt="banner-arrow" width={24} height={24} />
+              <img src="/banner-arrow.svg" alt="banner-arrow" width={20} height={20} />
             </picture>
             <BackToHome href={`categories/${postModel.category.toLowerCase().split(' ').join('-')}`}>
               <span>{postModel.category}</span>

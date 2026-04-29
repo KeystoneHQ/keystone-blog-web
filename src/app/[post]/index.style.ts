@@ -176,7 +176,7 @@ export const BackToHomeAndShare = styled.div`
   line-height: 24px;
   display: flex;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 8px;
   img {
     width: 24px;
     height: 24px;
