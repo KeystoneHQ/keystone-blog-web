@@ -124,11 +124,11 @@ export const BackToHome = styled(Link)`
   ${HoverStyle}
   font-family: Neue Kaine;
   font-weight: 733;
+  font-style: Bold;
   font-size: 18px;
-  line-height: 28px;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-  color: var(--fg-subtle-color);
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  color: #B2B6C2;
   .active {
     left: 0;
   }
@@ -176,7 +176,7 @@ export const BackToHomeAndShare = styled.div`
   line-height: 24px;
   display: flex;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 8px;
   img {
     width: 24px;
     height: 24px;
@@ -248,7 +248,7 @@ export const BodyContainer = styled.div`
   justify-content: flex-start;
   max-width: 1580px;
   margin: 0 auto;
-  gap: 100px;
+  gap: 80px;
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
   }
