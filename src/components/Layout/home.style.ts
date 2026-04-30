@@ -72,5 +72,7 @@ export const Description = styled(Body)`
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
+    text-align: center;
+    margin: 0 40px;
   }
 `

@@ -119,7 +119,7 @@ export default function Content({ article, postModel, minutesToRead }: any) {
           </BodyText>
           <MainSiteModule />
         </ArticleContainer>
-        <ShareMedia post={article} />
+        {!isMobile && <ShareMedia post={article} />}
       </BodyContainer>
     </PostContainer>
   )
