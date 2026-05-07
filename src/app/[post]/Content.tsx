@@ -5,6 +5,7 @@ import {
   ArticleContainer,
   BackToHome,
   BackToHomeAndShare,
+  BackToHomeContainer,
   BodyContainer,
   BodyText,
   Category,
@@ -94,15 +95,18 @@ export default function Content({ article, postModel, minutesToRead }: any) {
         {isMobile ? null : <TableOfContents headings={postModel.headings} />}
         <ArticleContainer>
           <BackToHomeAndShare>
-            <BackToHome href="/">
-              <span>Blog Home</span>
-            </BackToHome>
-            <picture>
-              <img src="/banner-arrow.svg" alt="banner-arrow" width={20} height={20} />
-            </picture>
-            <BackToHome href={`categories/${postModel.category.toLowerCase().split(' ').join('-')}`}>
-              <span>{postModel.category}</span>
-            </BackToHome>
+            <BackToHomeContainer>
+              <BackToHome href="/">
+                <span>Blog Home</span>
+              </BackToHome>
+              <picture>
+                <img src="/banner-arrow.svg" alt="banner-arrow" width={20} height={20} />
+              </picture>
+              <BackToHome href={`categories/${postModel.category.toLowerCase().split(' ').join('-')}`}>
+                <span>{postModel.category}</span>
+              </BackToHome>
+            </BackToHomeContainer>
+            {isMobile && <ShareMedia post={article} />}
           </BackToHomeAndShare>
           {postModel.summary && (
             <Summary>

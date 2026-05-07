@@ -5,7 +5,6 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
-  RedditShareButton,
 } from 'react-share'
 import Image from 'next/image'
 

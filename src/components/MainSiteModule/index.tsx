@@ -54,14 +54,14 @@ const MainSiteModule: FC = () => {
           {mediaLogo.map((media) => (
             <Link href={media.link} key={media.mediaName}>
               <Image
-                src={media.logoC}
+                src={media.logo}
                 height={32}
                 width={32}
                 alt={media.mediaName}
               />
               <Image
                 className="hovered"
-                src={media.logo}
+                src={media.logoC}
                 height={32}
                 width={32}
                 alt={media.mediaName}

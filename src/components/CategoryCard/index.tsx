@@ -7,7 +7,7 @@ import {
 import React, { FC } from 'react'
 import { PostModel } from '../../types/homePageType'
 import Image from 'next/image'
-import { Category } from '../SubHeroCard/index.style'
+import { Category, CategoryAndPublishTime } from '../SubHeroCard/index.style'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 
 interface CategoryCardProps {
@@ -27,14 +27,16 @@ const CategoryCard: FC<CategoryCardProps> = ({ post, className }) => {
         />
       )}
       <PostInfo>
-        <Category
-          $fontColor={CATEGORY_COLOR_MAPPER[post.category]?.fontColor}
-          $bgColor={CATEGORY_COLOR_MAPPER[post.category]?.bgColor}
-        >
-          {post.category}
-        </Category>
+        <CategoryAndPublishTime>
+          <Category
+            $fontColor={CATEGORY_COLOR_MAPPER[post.category]?.fontColor}
+            $bgColor={CATEGORY_COLOR_MAPPER[post.category]?.bgColor}
+          >
+            {post.category}
+          </Category>
+          {post.category && <PublishTime>{post.publishTime}</PublishTime>}
+        </CategoryAndPublishTime>
         <Title>{post.title}</Title>
-        <PublishTime>{post.publishTime}</PublishTime>
       </PostInfo>
     </CategoryCardWrapper>
   )

@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 import CategoryCard from '@/components/CategoryCard'
-import { PublishTime, Title } from '@/components/CategoryCard/index.style'
+import {
+  PostInfo as CategoryCardPostInfo,
+  PublishTime,
+  Title,
+} from '@/components/CategoryCard/index.style'
 import { ButtonStyled } from '../Button/style'
-import { Category } from '../SubHeroCard/index.style'
+import { Category, CategoryAndPublishTime } from '../SubHeroCard/index.style'
 
 export const OtherCategoryWrapper = styled.div`
   display: flex;
@@ -51,16 +55,37 @@ export const PostItem = styled(CategoryCard)`
   flex-direction: row-reverse;
   justify-content: space-between;
   width: 100%;
+  ${CategoryCardPostInfo} {
+    display: flex;
+    flex-direction: column;
+  }
+  ${CategoryAndPublishTime} {
+    display: contents;
+  }
+  ${Category} {
+    order: 1;
+    width: fit-content;
+  }
   ${Title} {
+    order: 2;
     width: 560px;
+    margin-top: 16px;
   }
   ${PublishTime} {
+    order: 3;
+    margin-top: 12px;
     color: var(--fg-subtle-color);
   }
   @media ${DEVICE_QUERY_MOBILE} {
     flex-direction: column;
     ${Title} {
       width: 100%;
+    }
+    ${Title} {
+      margin-top: 8px;
+    }
+    ${PublishTime} {
+      margin-top: 6px;
     }
   }
 `
