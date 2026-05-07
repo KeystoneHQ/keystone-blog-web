@@ -12,8 +12,8 @@ export const MainSiteModuleWrapper = styled.div`
     top: -124%;
     @media ${DEVICE_QUERY_MOBILE} {
       position: inherit;
-      width: 280px;
-      height: 280px;
+      width: 220px;
+      height: 220px;
     }
   }
   @media ${DEVICE_QUERY_MOBILE} {
@@ -87,6 +87,7 @@ export const Description = styled.div`
   font-weight: 733;
   line-height: 22px; /* 157.143% */
   letter-spacing: 0.28px;
+  color: var(--fg-subtle-color);
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;

@@ -120,6 +120,11 @@ const HoverStyle = css`
     }
   }
 `
+export const BackToHomeContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
 export const BackToHome = styled(Link)`
   ${HoverStyle}
   font-family: Neue Kaine;
@@ -128,15 +133,11 @@ export const BackToHome = styled(Link)`
   font-size: 18px;
   line-height: 26px;
   letter-spacing: 0.02em;
-  color: #B2B6C2;
   .active {
     left: 0;
   }
   span {
-    background: var(--fg-subtle-color);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    width: fit-content;
+    color: #B2B6C2;
   }
   &:hover {
     span {
@@ -144,20 +145,28 @@ export const BackToHome = styled(Link)`
       background-clip: text;
     }
   }
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-family: Neue Kaine;
+    font-weight: 733;
+    font-style: Bold;
+    font-size: 14px;
+    line-height: 20px;
+  }
 `
 
 export const Share = styled.div`
-  font-family: Open Sans;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 2%;
+  font-family: Neue Kaine;
+  font-weight: 733;
+  font-style: Bold;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
   ${HoverStyle}
   .active {
     right: 0;
   }
   span {
-    color: var(--fg-muted-color);
+    color: #B2B6C2;
   }
   &:hover {
     span {
@@ -175,8 +184,7 @@ export const BackToHomeAndShare = styled.div`
   font-weight: 600;
   line-height: 24px;
   display: flex;
-  justify-content: flex-start;
-  gap: 8px;
+  justify-content: space-between;
   img {
     width: 24px;
     height: 24px;
@@ -188,7 +196,13 @@ export const BackToHomeAndShare = styled.div`
     font-size: 14px;
     line-height: 22px;
     width: calc(100vw - var(--mobile-padding) * 2);
+    margin-left: 18px;
     margin-bottom: 0;
+    padding-bottom: 0;
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 `
 
@@ -280,6 +294,10 @@ export const SummaryTitle = styled.h2`
   letter-spacing: 2%;
   color: #5D657A;
   margin-bottom: 10px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 14px;
+    line-height: 20px;
+  }
 `
 
 export const SummaryContent = styled.div`
@@ -292,8 +310,8 @@ export const SummaryContent = styled.div`
   letter-spacing: 2%;
   color: #5D657A;
   @media ${DEVICE_QUERY_MOBILE} {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
   }
 `
 
@@ -384,8 +402,8 @@ export const BodyText = styled.div`
     margin: var(--md-space-lg) 0 var(--md-space-sm);
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 18px;
-      line-height: 28px;
-      margin: var(--md-space-md) 0 var(--md-space-xs);
+      line-height: 26px;
+      margin: var(--md-space-md) 0 var(--md-space-md);
     }
   }
   h3 {
@@ -397,8 +415,8 @@ export const BodyText = styled.div`
     margin: var(--md-space-md) 0 var(--md-space-xs);
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 14px;
-      line-height: 22px;
-      margin: 20px 0 var(--md-space-xxs);
+      line-height: 20px;
+      margin: 20px 0 var(--md-space-sm);
     }
   }
   p {
@@ -409,8 +427,8 @@ export const BodyText = styled.div`
     letter-spacing: 0.02em;
     margin: 0 0 var(--md-space-sm);
     @media ${DEVICE_QUERY_MOBILE} {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
   p + p {
@@ -480,6 +498,10 @@ export const BodyText = styled.div`
     white-space: nowrap;
     font-size: 16px;
     line-height: 24px;
+    @media ${DEVICE_QUERY_MOBILE} {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
   th {
     font-weight: 700;

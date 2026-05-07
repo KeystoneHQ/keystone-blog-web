@@ -51,6 +51,25 @@ export const MediaWrapper = styled.div`
   }
 
   @media ${DEVICE_QUERY_MOBILE} {
-    gap: 12px;
+    gap: 8px;
+    padding: 8px 4px;
+    background: #BCC0CC;
+    justify-content: space-around;
+    .icon-default,
+    .icon-active {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+    }
+
+    .icon-default {
+      opacity: 0;
+    }
+
+    .icon-active {
+      opacity: 1;
+    }
   }
 `
