@@ -282,6 +282,7 @@ export const Summary = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;
     margin: 20px 24px 0 24px;
+    padding: 16px 12px;
   }
 `
 
@@ -511,8 +512,8 @@ export const BodyText = styled.div`
     line-height: 28px;
     margin: var(--md-space-xxs) 0;
     @media ${DEVICE_QUERY_MOBILE} {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
   li > p {

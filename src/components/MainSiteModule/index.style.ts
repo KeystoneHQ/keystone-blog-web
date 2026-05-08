@@ -24,6 +24,7 @@ export const MainSiteModuleWrapper = styled.div`
     height: auto;
     margin: 0 24px;
     align-items: center;
+    margin-bottom: 80px;
   }
 `
 
@@ -91,6 +92,7 @@ export const Description = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
+    text-align: center;
   }
 `
 

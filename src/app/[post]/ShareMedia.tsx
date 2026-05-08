@@ -51,15 +51,6 @@ export default function ShareMedia({ post }: { post: any }) {
       >
         <Share>
           <span>Share</span>
-          <picture>
-            <img src="/share.svg" className="default" alt="" loading="lazy" />
-            <img
-              src="/share-active.svg"
-              className="active"
-              alt=""
-              loading="lazy"
-            />
-          </picture>
         </Share>
       </Popover>
       {isShowNotification && (
