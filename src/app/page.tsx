@@ -1,6 +1,6 @@
 import React from 'react'
 import Script from 'next/script'
-import { getHeroPosts, getPostsLatests } from '@/utils/api'
+import { getHeroPosts, getPostsAll, getPostsLatests } from '@/utils/api'
 import { Homepage } from '@/types/homePageType'
 import HomeLayout from '@/components/Layout/home'
 import { AllCategories } from '@/components/HomeCategories/All'
@@ -92,7 +92,12 @@ export async function generateMetadata(
 export default async function Home() {
   const homepage = await getPosts()
   const schema = createHomePageSchema()
-
+  const allPosts = await getPostsAll()
+  const post = allPosts.map((it) => {
+    return {
+      url: `${BLOG_HOME_PAGE}/${it.attributes.slug}`,
+    }
+  })
   return (
     <>
       <Script
@@ -102,6 +107,11 @@ export default async function Home() {
       >
         {JSON.stringify(schema)}
       </Script>
+      <div style={{ display: 'none' }}>
+        {post.map((it) => (
+          <a key={it.url} href={it.url}>{it.url}</a>
+        ))}
+      </div>
       <HomeLayout description={homepage.description}>
         <AllCategories homepage={homepage} />
       </HomeLayout>
