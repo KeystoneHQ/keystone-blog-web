@@ -1,7 +1,7 @@
 import React from 'react'
 import readingTime from 'reading-time'
 import { postConverter } from './utils'
-import { fetchAPI, getPostsAll } from '@/utils/api'
+import { getPostBySlug, getPostsAll } from '@/utils/api'
 import Content from './Content'
 import { Metadata, ResolvingMetadata } from 'next'
 
@@ -14,18 +14,7 @@ export async function generateMetadata(
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { post } = params
-  const articlesRes = await fetchAPI('/posts', {
-    filters: {
-      slug: post,
-    },
-    populate: {
-      hero_image: {
-        fields: ['name', 'url'],
-      },
-    },
-  })
-
-  const article = articlesRes.data[0]
+  const article = await getPostBySlug(post).catch(() => null)
 
   if (!article) {
     return {}
@@ -64,24 +53,13 @@ export default async function PostDetail({
   }
 }) {
   const { post } = params
-  const articlesRes = await fetchAPI('/posts', {
-    filters: {
-      slug: post,
-    },
-    populate: {
-      hero_image: {
-        fields: ['name', 'url'],
-      },
-    },
-  })
+  const article = await getPostBySlug(post).catch(() => null)
 
-  if (!articlesRes.data[0]) {
+  if (!article) {
     return {
       errorCode: 404,
     }
   }
-
-  const article = articlesRes.data[0]
 
   const postModel = postConverter(article.attributes)
   const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes)
