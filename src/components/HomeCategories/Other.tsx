@@ -2,8 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import { Category } from '@/constants/categories'
-import { CategoryActivedType, PostModel } from '@/types/homePageType'
-import { Post } from '@/types/postDetailPageType'
+import { CategoryActivedType, Post, PostModel } from '@/types/homePageType'
 import { CategoryName, PostItem, Posts } from './Other.style'
 import Button from '@/components/Button'
 import { getPostsByCategory } from '@/utils/api'
