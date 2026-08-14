@@ -15,7 +15,7 @@ export interface Post {
 
 export interface HeroImage {
   data: {
-    id: string
+    id: string | number
     attributes: {
       name: string
       url: string
