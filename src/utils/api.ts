@@ -7,6 +7,7 @@ type ApprovedPost = Record<string, any> & {
   body_text: string
   title: string
   category: string
+  summary?: string
   created_at: string
   updated_at: string
   published_at: string
@@ -48,6 +49,7 @@ async function fetchBlogApi(path: string, params: Record<string, any> = {}) {
 const toLegacyPost = (post: ApprovedPost) => {
   const attributes = {
     ...post,
+    summary: typeof post.summary === 'string' ? post.summary : '',
     createdAt: post.created_at,
     updatedAt: post.updated_at,
     publishedAt: post.published_at,

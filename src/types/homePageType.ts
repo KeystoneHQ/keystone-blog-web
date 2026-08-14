@@ -43,6 +43,7 @@ export interface Post {
     body_text: string
     title: string
     category: string
+    summary: string
     createdAt: string
     updatedAt: string
     publishedAt: string
