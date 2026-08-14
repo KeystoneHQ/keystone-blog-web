@@ -59,7 +59,9 @@ const toLegacyPost = (post: ApprovedPost) => {
 }
 
 const usablePosts = (posts: ApprovedPost[]) =>
-  posts.filter((post) => Boolean(post.slug))
+  posts.filter(
+    (post) => typeof post.slug === 'string' && post.slug.trim().length > 0
+  )
 
 export async function getHeroPosts(locale = 'en') {
   const { homepage } = await fetchBlogApi('/homepage/', { locale })

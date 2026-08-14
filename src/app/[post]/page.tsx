@@ -41,8 +41,12 @@ export async function generateMetadata(
 
 export async function generateStaticParams() {
   const postAll = await getPostsAll()
-  const routes = postAll.map((it) => ({ post: it.attributes.slug }))
-  return routes
+  return postAll.flatMap((item) => {
+    const slug = item?.attributes?.slug
+    return typeof slug === 'string' && slug.trim().length > 0
+      ? [{ post: slug }]
+      : []
+  })
 }
 
 export default async function PostDetail({
