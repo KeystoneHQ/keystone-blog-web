@@ -33,7 +33,7 @@ export interface SEO {
 }
 
 export interface PostModel {
-  bodyText: string
+  bodyHtml: string
   title: string
   category: string
   publishTime: string

@@ -16,9 +16,7 @@ import {
 } from './index.style'
 import vector from '@/../public/vector.svg'
 import Image from 'next/image'
-import { marked } from 'marked'
 import MainSiteModule from '@/components/MainSiteModule'
-import markedAlert from 'marked-alert'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import ShareMedia from './ShareMedia'
 
@@ -74,7 +72,7 @@ export default function Content({ article, postModel, minutesToRead }: any) {
       <BodyText>
         <div
           dangerouslySetInnerHTML={{
-            __html: marked.use(markedAlert()).parse(postModel.bodyText),
+            __html: postModel.bodyHtml,
           }}
         />
       </BodyText>

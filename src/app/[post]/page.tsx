@@ -66,7 +66,7 @@ export default async function PostDetail({
   }
 
   const postModel = postConverter(article.attributes)
-  const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes)
+  const minutesToRead = Math.ceil(readingTime(article.attributes.body_text).minutes)
 
   return (
     <Content

@@ -1,7 +1,6 @@
 import { Post, PostModel } from '@/types/postDetailPageType'
 import { BLOG_HOME_PAGE } from '@/constants/links'
-import markedAlert from 'marked-alert'
-import { getMarkDownParser } from './markdown'
+import { renderSafeBlogMarkdown } from './markdown'
 
 export const getPublishTime = (publishAt: string) => {
   const date = new Date(publishAt)
@@ -14,14 +13,12 @@ export const getPublishTime = (publishAt: string) => {
 }
 
 const postBodyConverter = (postBody: string): string => {
-  const markDownParser = getMarkDownParser(postBody)
-  markDownParser.use(markedAlert())
-  return markDownParser.parse(postBody) as string
+  return renderSafeBlogMarkdown(postBody)
 }
 
 export const postConverter = (post: Post): PostModel => {
   return {
-    bodyText: postBodyConverter(post.body_text),
+    bodyHtml: postBodyConverter(post.body_text),
     title: post.title,
     category: post.category,
     publishTime: getPublishTime(post.publishedAt),
