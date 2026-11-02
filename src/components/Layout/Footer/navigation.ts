@@ -2,51 +2,64 @@ import type { NavigationGroup, SocialLink } from '../shared/types'
 
 const MAIN_SITE = 'https://keyst.one'
 
-export const footerGroups: NavigationGroup[] = [
+export interface FooterNavigationGroup extends NavigationGroup {
+  mobileOrder: number
+}
+
+export const footerGroups: FooterNavigationGroup[] = [
   {
     id: 'keystone',
     label: 'Keystone',
+    mobileOrder: 1,
     items: [
+      { id: 'AboutUs', label: 'About Us', href: `${MAIN_SITE}/about-us` },
+      { id: 'NexusApp', label: 'Nexus App', href: `${MAIN_SITE}/nexus` },
+      { id: 'Blog', label: 'Blog', href: '/' },
       {
-        id: 'nexus-apple',
-        label: 'Keystone Nexus for iOS',
-        href: 'https://apps.apple.com/app/keystone-nexus/id6742313403',
-        target: '_blank',
+        id: 'FirmwareUpdate',
+        label: 'Firmware Update',
+        href: `${MAIN_SITE}/firmware`,
       },
       {
-        id: 'nexus-google',
-        label: 'Keystone Nexus for Android',
-        href: 'https://play.google.com/store/apps/details?id=com.keystone.wallet',
-        target: '_blank',
-      },
-      {
-        id: 'companion',
-        label: 'Gen 2 companion app',
-        href: `${MAIN_SITE}/contents/KeystoneMobile/keystone_v1.4.0_26.apk`,
-        target: '_blank',
-      },
-      { id: 'btc-only', label: 'BTC-only firmware', href: `${MAIN_SITE}/btc-only` },
-      { id: 'blog', label: 'Blog', href: '/' },
-      { id: 'privacy-promises', label: 'Privacy promises', href: `${MAIN_SITE}/privacy-promises` },
-      { id: 'support', label: 'Support', href: 'https://support.keyst.one', target: '_blank' },
-      { id: 'roadmap', label: 'Roadmap', href: `${MAIN_SITE}/roadmap` },
-      {
-        id: 'suggest-assets',
-        label: 'Suggest a wallet or asset',
+        id: 'SuggestWalletOrAssets',
+        label: 'Suggest Wallet/Assets',
         href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaUn_GxkxNzNEeKx5s9CQFtB3YDW_Twmf0rARqeJVsUV2QlQ/viewform?usp=sf_link',
         target: '_blank',
       },
-      { id: 'nft', label: 'NFT lock screen', href: `${MAIN_SITE}/nft` },
-      { id: 'github', label: 'GitHub', href: 'https://github.com/KeystoneHQ', target: '_blank' },
       {
-        id: 'ens-database',
-        label: 'ENS database',
+        id: 'SupportedCoins',
+        label: 'Supported Coins',
+        href: `${MAIN_SITE}/supported-crypto-assets/`,
+        target: '_blank',
+      },
+      { id: 'BtcOnly', label: 'BTC-Only', href: `${MAIN_SITE}/btc-only` },
+      { id: 'Roadmap', label: 'Roadmap', href: `${MAIN_SITE}/roadmap` },
+      {
+        id: 'PrivacyPromises',
+        label: 'Privacy Promises',
+        href: `${MAIN_SITE}/privacy-promises`,
+      },
+      {
+        id: 'Support',
+        label: 'Support',
+        href: 'https://support.keyst.one',
+        target: '_blank',
+      },
+      {
+        id: 'GitHubRepo',
+        label: 'GitHub Repo',
+        href: 'https://github.com/KeystoneHQ',
+        target: '_blank',
+      },
+      {
+        id: 'ENSDatabase',
+        label: 'ENS Database',
         href: 'https://github.com/KeystoneHQ/ENS-meta-repo/releases',
         target: '_blank',
       },
       {
-        id: 'abi-pack',
-        label: 'ABI pack',
+        id: 'ABIPack',
+        label: 'ABI Pack',
         href: 'https://github.com/KeystoneHQ/Smart-Contract-Metadata-Registry/releases',
         target: '_blank',
       },
@@ -55,33 +68,109 @@ export const footerGroups: NavigationGroup[] = [
   {
     id: 'legal',
     label: 'Legal',
+    mobileOrder: 3,
     items: [
-      { id: 'sales-terms', label: 'Sales Terms & Conditions', href: `${MAIN_SITE}/sales-terms-and-conditions` },
-      { id: 'website-terms', label: 'Website Terms of Use', href: `${MAIN_SITE}/website-terms-of-use` },
-      { id: 'app-terms', label: 'Keystone Terms of Use', href: `${MAIN_SITE}/keystone-terms-of-use` },
-      { id: 'privacy-policy', label: 'Privacy Policy', href: `${MAIN_SITE}/privacy-policy` },
-      { id: 'cookie-policy', label: 'Cookie Policy', href: `${MAIN_SITE}/cookie-policy` },
-      { id: 'shipping-policy', label: 'Shipping Policy', href: `${MAIN_SITE}/shipping-policy` },
-      { id: 'refund-policy', label: 'Refund Policy', href: `${MAIN_SITE}/refund-policy` },
+      {
+        id: 'termsOfConditions',
+        label: 'Terms Of Conditions',
+        href: `${MAIN_SITE}/terms-of-conditions`,
+      },
+      {
+        id: 'PrivacyPolicy',
+        label: 'Privacy Policy',
+        href: `${MAIN_SITE}/privacy-policy`,
+      },
+      {
+        id: 'CookiePolicy',
+        label: 'Cookie Policy',
+        href: `${MAIN_SITE}/cookie-policy`,
+      },
+      {
+        id: 'ShippingPolicy',
+        label: 'Shipping Policy',
+        href: `${MAIN_SITE}/shipping-policy`,
+      },
+      {
+        id: 'RefundPolicy',
+        label: 'Refund Policy',
+        href: `${MAIN_SITE}/refund-policy`,
+      },
     ],
   },
   {
-    id: 'partnerships',
-    label: 'Partnerships',
+    id: 'partnership',
+    label: 'Partnership',
+    mobileOrder: 2,
     items: [
-      { id: 'resellers', label: 'Resellers', href: `${MAIN_SITE}/resellers` },
-      { id: 'affiliates', label: 'Affiliates', href: `${MAIN_SITE}/affiliates` },
-      { id: 'bounty', label: 'Bug bounty program', href: `${MAIN_SITE}/bug-bounty-program` },
+      { id: 'Resellers', label: 'Resellers', href: `${MAIN_SITE}/resellers` },
       {
-        id: 'media-kit',
-        label: 'Media kit',
+        id: 'Affiliate',
+        label: 'Affiliates',
+        href: `${MAIN_SITE}/affiliates`,
+      },
+      {
+        id: 'BountyProgram',
+        label: 'Bounty Program',
+        href: `${MAIN_SITE}/bug-bounty-program`,
+      },
+      {
+        id: 'MediaKit',
+        label: 'Media Kit',
         href: 'https://drive.google.com/drive/folders/1MqffY73AbWE3ItSE6s_YP8SD7k1Gbz8r',
         target: '_blank',
       },
-      { id: 'metamask', label: 'MetaMask', href: `${MAIN_SITE}/metamask` },
+      {
+        id: 'MetaMask',
+        label: 'MetaMask Compatibility',
+        href: `${MAIN_SITE}/metamask`,
+      },
+      {
+        id: 'Zcash',
+        label: 'Zcash Ecosystem',
+        href: `${MAIN_SITE}/zcash`,
+        target: '_blank',
+      },
     ],
   },
 ]
+
+export const paymentMethods = [
+  { id: 'paypal', label: 'PayPal', icon: '/layout/footer/payment/paypal.svg' },
+  { id: 'visa', label: 'Visa', icon: '/layout/footer/payment/visa.svg' },
+  {
+    id: 'mastercard',
+    label: 'Mastercard',
+    icon: '/layout/footer/payment/mastercard.svg',
+  },
+  {
+    id: 'bitcoin',
+    label: 'Bitcoin',
+    icon: '/layout/footer/payment/bitcoin.svg',
+  },
+  {
+    id: 'solana-pay-mark',
+    label: 'Solana Pay',
+    icon: '/layout/footer/payment/solana-pay-mark.svg',
+  },
+  {
+    id: 'unionpay',
+    label: 'UnionPay',
+    icon: '/layout/footer/payment/unionpay.svg',
+  },
+  { id: 'jcb', label: 'JCB', icon: '/layout/footer/payment/jcb.svg' },
+  { id: 'mb', label: 'Multibanco', icon: '/layout/footer/payment/mb.svg' },
+  {
+    id: 'bancontact',
+    label: 'Bancontact',
+    icon: '/layout/footer/payment/bancontact.svg',
+  },
+  { id: 'sepa', label: 'SEPA', icon: '/layout/footer/payment/sepa.svg' },
+  {
+    id: 'more-payment',
+    label: 'More payment methods',
+    icon: '/layout/footer/payment/more-payment.svg',
+  },
+] as const
 
 export const socialLinks: SocialLink[] = [
   {
@@ -120,13 +209,6 @@ export const socialLinks: SocialLink[] = [
     activeIcon: '/layout/footer/social/reddit-active.png',
   },
   {
-    id: 'jike',
-    label: 'Jike',
-    href: 'https://web.okjike.com/u/370FC219-7DFC-4774-BC01-3AE19347D1E7',
-    icon: '/layout/footer/social/jike.png',
-    activeIcon: '/layout/footer/social/jike-active.png',
-  },
-  {
     id: 'warpcast',
     label: 'Warpcast',
     href: 'https://warpcast.com/keystonewallet',
@@ -154,12 +236,5 @@ export const footerUtilityLinks = {
   tracking: 'https://shop.keyst.one/apps/17TRACK',
 } as const
 
-export const contactLinks = [
-  { id: 'support', label: 'Support team', href: 'mailto:support@keyst.one' },
-  { id: 'collaborations', label: 'Business collaborations', href: 'mailto:affiliate@keyst.one' },
-  {
-    id: 'ticket',
-    label: 'Raise a ticket',
-    href: 'https://keystonewallet.atlassian.net/servicedesk/customer/portal/1',
-  },
-] as const
+export const contactTicketLink =
+  'https://keystonewallet.atlassian.net/servicedesk/customer/portal/1'

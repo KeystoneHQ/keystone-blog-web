@@ -1,11 +1,13 @@
 const messages = {
-  slogan: 'Your keys, your crypto.\nSecure them with Keystone.',
-  contactUs: 'Contact us',
-  supportTeam: 'Support team',
-  collaborations: 'Business collaborations',
-  raiseTicket: 'Raise a ticket',
-  shippingRegions: 'Shipping regions',
-  trackOrder: 'Track your order',
+  slogan: 'The Only Hardware Wallet\nYou\'ll Ever Need.',
+  supportEmail: 'Support email',
+  supportEmailAddress: 'support@keyst.one',
+  address:
+    '19H MAXGRAND PLAZA\nNo.3 Tai Yau Street\nSan Po Kong Kowloon 999077\nHong Kong',
+  paymentMethods: 'Payment methods',
+  raiseTicket: 'Raise a Ticket',
+  shippingRegions: 'Shipping Regions & Details',
+  trackOrder: 'Order Track',
   backToTop: 'Back to top',
 } as const
 
