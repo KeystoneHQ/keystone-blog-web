@@ -20,12 +20,10 @@ export default function RootLayout({
           content="nwIg5t9B3A_0g81tXoaDStD6Z2uYyCDU7GBSALU7ZDM"
         />
       </head>
-      <body>
-        <div className={`${open_sans.variable} ${mont_serrat.variable}`}>
-          <Layout>
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </Layout>
-        </div>
+      <body className={`${open_sans.variable} ${mont_serrat.variable}`}>
+        <StyledComponentsRegistry>
+          <Layout>{children}</Layout>
+        </StyledComponentsRegistry>
         <GoogleAnalytics gaId="G-WCBLWW84S2" />
       </body>
     </html>

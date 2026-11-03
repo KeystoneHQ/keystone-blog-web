@@ -1,0 +1,11 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.75 7.75H37.25V40.25H10.75V7.75Z" stroke="#83868F" stroke-width="1.5"/>
+  <path d="M17.75 8.5V39.5" stroke="url(#blog-gradient)" stroke-width="1.5"/>
+  <rect x="27" y="33" width="6" height="1.5" fill="#1BE0C6"/>
+  <defs>
+    <linearGradient id="blog-gradient" x1="17.75" y1="37.9878" x2="20.3947" y2="37.8395" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3165F5"/>
+      <stop offset="1" stop-color="#1DBBF5"/>
+    </linearGradient>
+  </defs>
+</svg>

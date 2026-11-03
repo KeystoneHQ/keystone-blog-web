@@ -29,7 +29,7 @@
 
 body {
   font-family:
-    'Mont',
+    var(--font-montserrat),
     -apple-system,
     'Microsoft Yahei',
     '微软雅黑',

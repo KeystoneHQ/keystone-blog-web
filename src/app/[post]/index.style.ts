@@ -482,7 +482,7 @@ export const BodyText = styled.div`
     -webkit-overflow-scrolling: touch;
   }
   center {
-    font-family: Mont;
+    font-family: var(--font-montserrat);
     font-weight: 700;
     font-size: 18px;
     line-height: 28px;
