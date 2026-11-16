@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Desc, NotificationWrapper } from './index.style';
 
 interface NotificationProps {
-  onClose: Function,
+  onClose: () => void,
   message: string,
   type: string
 }

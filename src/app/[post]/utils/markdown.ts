@@ -18,7 +18,8 @@ const slugify = (text: string): string => {
 
 const renderer = new Renderer();
 
-renderer.heading = function(text, depth) {
+renderer.heading = function({ tokens, depth }) {
+  const text = this.parser.parseInline(tokens)
   const cleanText = text.replace(/<[^>]*>/g, '');
   const slug = slugify(cleanText); 
   return `<h${depth} id="${slug}">${text}</h${depth}>`;

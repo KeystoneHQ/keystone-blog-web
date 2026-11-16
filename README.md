@@ -6,7 +6,7 @@ API at runtime.
 
 ## Development
 
-Use Node.js `22.23.4` (the minimum supported version is also enforced by
+Use Node.js `26.13.0` (the minimum supported version is also enforced by
 `package.json`):
 
 ```bash
@@ -30,6 +30,7 @@ pnpm test
 pnpm lint
 pnpm exec tsc --noEmit
 pnpm build
+pnpm audit --prod
 ```
 
 ## Content directories

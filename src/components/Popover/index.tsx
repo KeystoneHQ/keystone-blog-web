@@ -13,7 +13,7 @@ import { Container, PopoverContainer } from './index.style';
 
 interface PopoverProps {
   content: ReactNode,
-  children: ReactElement,
+  children: ReactElement<Record<string, unknown>>,
   placement?: string,
   transition?: string,
   trigger?: string,
@@ -27,7 +27,7 @@ const Popover: FC<PopoverProps> = ({
   trigger = 'hover',
   defaultOpen = false,
 }) => {
-  const popoverRef = useRef<HTMLDivElement>();
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   const [popoverOpen, setPopoverOpen] = useState(defaultOpen);
 

@@ -1,33 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 
 function useMediaQuery(query: string) {
-  const getMatches = (query: string) => {
-    // Prevents SSR issues
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches;
-    }
-    return false;
-  };
-
-  const [matches, setMatches] = useState<boolean>(getMatches(query));
-
-  const handleChange = useCallback(() => {
-    setMatches(getMatches(query));
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    const mediaQuery = window.matchMedia(query);
+    mediaQuery.addEventListener('change', onStoreChange);
+    return () => mediaQuery.removeEventListener('change', onStoreChange);
   }, [query]);
 
-  useEffect(() => {
-    const matchMedia = window.matchMedia(query);
+  const getSnapshot = useCallback(
+    () => window.matchMedia(query).matches,
+    [query]
+  );
 
-    handleChange();
-
-    matchMedia.addEventListener('change', handleChange);
-
-    return () => {
-      matchMedia.removeEventListener('change', handleChange);
-    };
-  }, [handleChange, query]);
-
-  return matches;
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 
 export default useMediaQuery;

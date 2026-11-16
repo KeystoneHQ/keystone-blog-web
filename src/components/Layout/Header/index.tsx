@@ -62,6 +62,8 @@ export default function Header() {
   }
 
   useEffect(() => {
+    // A route change is an external navigation event; all open menus must reset.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     closeMenus()
   }, [pathname])
 

@@ -24,7 +24,6 @@ import {
   Title,
   TopBanner,
 } from './index.style'
-import vector from '@/../public/vector.svg'
 import Image from 'next/image'
 import MainSiteModule from '@/components/MainSiteModule'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
@@ -85,7 +84,7 @@ export default function Content({
           <Title>{postModel.title}</Title>
           <PublishTimeAndReadingTime>
             <PublishTime>{postModel.publishTime}</PublishTime>
-            <Image src={vector} alt="divider" width={2} height={18} />
+            <Image src="/vector.svg" alt="divider" width={2} height={18} />
             <ReadingTime>{minutesToRead} mins read</ReadingTime>
           </PublishTimeAndReadingTime>
         </PostInfo>

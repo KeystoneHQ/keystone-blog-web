@@ -17,7 +17,7 @@ describe('Header', () => {
       screen.getByRole('link', { name: 'Keystone home' }).getAttribute('href')
     ).toBe('https://keyst.one')
     const buyLink = screen.getByRole('link', { name: 'BUY' })
-    expect(buyLink.getAttribute('href')).toBe('https://keyst.one/shop')
+    expect(buyLink.getAttribute('href')).toBe('https://shop.keyst.one/shop')
 
     jest.spyOn(buyLink, 'getBoundingClientRect').mockReturnValue({
       x: 10,
@@ -47,7 +47,7 @@ describe('Header', () => {
     expect(button.getAttribute('aria-expanded')).toBe('true')
     expect(
       screen.getByRole('link', { name: 'Keystone 3 Pro' }).getAttribute('href')
-    ).toBe('https://keyst.one/shop/products/keystone-3-pro')
+    ).toBe('https://shop.keyst.one/products/keystone-3-pro')
   })
 
   it('renders product badges and updates the animated preview on hover', () => {
@@ -63,7 +63,7 @@ describe('Header', () => {
     ).toBe('keystone-3-pro')
 
     fireEvent.mouseEnter(
-      screen.getByRole('link', { name: 'Keystone 3 Pro NFT Customization' })
+      screen.getByRole('link', { name: 'Keystone 3 Pro Customization' })
     )
 
     expect(
@@ -120,7 +120,7 @@ describe('Header', () => {
     expect(zcash.querySelector('img')).toBeTruthy()
     expect(zcash.querySelector('svg')).toBeTruthy()
     expect(more.getAttribute('href')).toBe(
-      'https://keyst.one/shop/products/keystone-3-pro-limited'
+      'https://shop.keyst.one/products/keystone-3-pro-co-branded-version'
     )
     expect(more.querySelector('svg')).toBeTruthy()
   })
