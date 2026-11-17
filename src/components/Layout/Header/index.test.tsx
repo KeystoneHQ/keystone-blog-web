@@ -17,7 +17,7 @@ describe('Header', () => {
       screen.getByRole('link', { name: 'Keystone home' }).getAttribute('href')
     ).toBe('https://keyst.one')
     const buyLink = screen.getByRole('link', { name: 'BUY' })
-    expect(buyLink.getAttribute('href')).toBe('https://shop.keyst.one/shop')
+    expect(buyLink.getAttribute('href')).toBe('https://shop.keyst.one/collections')
 
     jest.spyOn(buyLink, 'getBoundingClientRect').mockReturnValue({
       x: 10,

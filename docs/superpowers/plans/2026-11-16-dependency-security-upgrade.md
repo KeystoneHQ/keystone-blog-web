@@ -52,7 +52,7 @@
 
 - [ ] **Step 1: Update only the four stale Header expectations**
 
-Change the expected BUY URL to `https://shop.keyst.one/shop`, the Keystone 3 Pro URL to `https://shop.keyst.one/products/keystone-3-pro`, the hover target name to `Keystone 3 Pro Customization`, and the partnership More URL to `https://shop.keyst.one/products/keystone-3-pro-co-branded-version`. Do not modify Header implementation or navigation data.
+Change the expected BUY URL to `https://shop.keyst.one/collections`, the Keystone 3 Pro URL to `https://shop.keyst.one/products/keystone-3-pro`, the hover target name to `Keystone 3 Pro Customization`, and the partnership More URL to `https://shop.keyst.one/products/keystone-3-pro-co-branded-version`. Do not modify Header implementation or navigation data.
 
 - [ ] **Step 2: Run the Header suite and verify the existing behavior is green**
 

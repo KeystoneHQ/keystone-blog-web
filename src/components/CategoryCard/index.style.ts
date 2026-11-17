@@ -34,6 +34,8 @@ export const CategoryCardWrapper = styled(Link)`
     }
   }
   img {
+    width: 400px;
+    height: 220px;
     object-fit: cover;
     border-radius: 24px;
   }
