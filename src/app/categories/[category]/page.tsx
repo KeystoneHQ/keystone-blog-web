@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getHomepageContent, getPostsByCategory } from '@/lib/blog/content'
 import HomeLayout from '@/components/Layout/home'
 import { OtherCategories } from '@/components/HomeCategories/Other'
-import { BLOG_HOME_PAGE, IMAGE_CDN } from '@/constants/links'
+import { BLOG_HOME_PAGE } from '@/constants/links'
 import type { Metadata } from 'next'
 import {
   BLOG_CATEGORY_NAMES,
@@ -36,7 +36,7 @@ export async function generateMetadata({
       type: 'article',
       title,
       description,
-      images: [`${IMAGE_CDN}/homepage.png`],
+      images: [`${BLOG_HOME_PAGE}/images/homepage.png`],
       url: categoryURL,
     },
   }

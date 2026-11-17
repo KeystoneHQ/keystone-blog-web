@@ -4,7 +4,7 @@ import { layoutTokens } from '../styles/tokens'
 
 const mobile = '@media (max-width: 1000px)'
 
-export const HeaderRoot = styled.header`
+export const HeaderRoot = styled.header<{$isScrolled: boolean}>`
   ${layoutTokens}
   position: sticky;
   top: 0;
@@ -12,7 +12,7 @@ export const HeaderRoot = styled.header`
   height: var(--layout-header-height);
   color: var(--layout-fg);
   font-family: var(--font-open-sans), 'Open Sans', sans-serif;
-  background: rgba(17, 18, 20, 0.88);
+  background: ${props => props.$isScrolled ? 'rgba(17, 18, 20, 0.88)' : 'rgb(17, 18, 20)'};
   border-bottom: 1px solid var(--layout-border);
   backdrop-filter: blur(8px);
 

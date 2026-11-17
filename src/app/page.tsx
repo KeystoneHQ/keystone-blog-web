@@ -3,7 +3,7 @@ import Script from 'next/script'
 import { getHomepageContent } from '@/lib/blog/content'
 import HomeLayout from '@/components/Layout/home'
 import { AllCategories } from '@/components/HomeCategories/All'
-import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links'
+import { BLOG_HOME_PAGE } from '../constants/links'
 import type { Metadata } from 'next'
 
 const HOME_PAGE_TITLE = 'Keystone\'s Blog'
@@ -46,7 +46,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: HOME_PAGE_TITLE,
       description: homepage.description,
-      images: [`${IMAGE_CDN}/homepage.png`],
+      images: [`${BLOG_HOME_PAGE}/images/homepage.png`],
       url: BLOG_HOME_PAGE,
     },
   }
