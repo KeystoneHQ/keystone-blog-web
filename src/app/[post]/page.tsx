@@ -36,33 +36,40 @@ const createBlogPostingSchema = (
 export function generateMetadata({
   params,
 }: {
-  params: { post: string }
-}): Metadata {
-  const article = getPostBySlug(params.post)
-  if (!article) return {}
+  params: Promise<{ post: string }>
+}): Promise<Metadata> {
+  return params.then(({ post }) => {
+    const article = getPostBySlug(post)
+    if (!article) return {}
 
-  const postModel = toPostDetail(article)
-  return {
-    title: postModel.seo.title,
-    description: postModel.seo.description,
-    alternates: { canonical: postModel.seo.canonicalURL },
-    openGraph: {
-      siteName: 'Keystone\'s Blog',
-      type: 'article',
+    const postModel = toPostDetail(article)
+    return {
       title: postModel.seo.title,
       description: postModel.seo.description,
-      images: [postModel.heroImage.url],
-      url: postModel.seo.canonicalURL,
-    },
-  }
+      alternates: { canonical: postModel.seo.canonicalURL },
+      openGraph: {
+        siteName: 'Keystone\'s Blog',
+        type: 'article',
+        title: postModel.seo.title,
+        description: postModel.seo.description,
+        images: [postModel.heroImage.url],
+        url: postModel.seo.canonicalURL,
+      },
+    }
+  })
 }
 
 export function generateStaticParams() {
   return getAllPosts().map(({ slug }) => ({ post: slug }))
 }
 
-export default function PostDetail({ params }: { params: { post: string } }) {
-  const article = getPostBySlug(params.post)
+export default async function PostDetail({
+  params,
+}: {
+  params: Promise<{ post: string }>
+}) {
+  const { post } = await params
+  const article = getPostBySlug(post)
   if (!article) notFound()
 
   const postModel = toPostDetail(article)

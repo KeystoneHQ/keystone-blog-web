@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 function getTransitionName(transition: string): string[] {
   const [anim, dir] = transition.split(' ');
@@ -8,43 +8,34 @@ function getTransitionName(transition: string): string[] {
 export function useVisibleTransition(
   open = false,
   transition = 'slide bottom',
-  containerRef,
-  onClose? : () => {},
+  containerRef: RefObject<HTMLElement | null>,
+  onClose?: () => void,
   defaultVisible: boolean = false,
 ) {
   const [visible, setVisible] = useState(defaultVisible);
 
-  const [className, setClassName] = useState<string>('');
-
-  const [transAnimsClassName, setTransAnimsClassName] = useState<string[]>([]);
-
-  useEffect(() => {
-    setTransAnimsClassName(getTransitionName(transition));
-  }, [transition]);
+  const transAnimsClassName = getTransitionName(transition);
+  const className = transAnimsClassName[open ? 0 : 1];
 
   useEffect(() => {
-    if (!Array.isArray(transAnimsClassName)) return;
-
-    const className = transAnimsClassName[open ? 0 : 1];
-
-    setClassName(className);
-
     if (open) {
+      // Visibility must remain mounted while the external open state animates in.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
     } else if (!defaultVisible) {
       if (!containerRef.current) return;
       const { animationDuration } = getComputedStyle(containerRef.current);
       const delay = parseFloat(animationDuration) * 1000;
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         setVisible(false);
-        onClose && onClose();
+        onClose?.();
       }, delay);
+      return () => clearTimeout(timeoutId);
     }
-  }, [open]);
+  }, [containerRef, defaultVisible, onClose, open]);
 
   return {
     visible,
-    setVisible,
     className,
   };
 }

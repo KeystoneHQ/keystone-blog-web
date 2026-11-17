@@ -6,7 +6,7 @@ const EXTERNAL_STORE_URL = 'https://shop.keyst.one'
 export const headerLinks = {
   home: MAIN_SITE,
   app: `${MAIN_SITE}/nexus`,
-  shop: `${EXTERNAL_STORE_URL}/shop`,
+  shop: `${EXTERNAL_STORE_URL}/collections`,
 } as const
 
 export const productGroups: NavigationGroup[] = [

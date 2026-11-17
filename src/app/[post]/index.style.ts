@@ -210,7 +210,7 @@ export const TableOfContentsContainer = styled.div`
   width: 300px;
   margin-left: 40px;
   position: sticky;
-  top: 50px;
+  top: 84px;
   height: fit-content;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
@@ -336,6 +336,15 @@ export const BodyText = styled.div`
   --md-space-sm: 16px;
   --md-space-md: 24px;
   --md-space-lg: 32px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 80px;
+  }
 
   > *:first-child {
     margin-top: 0;
