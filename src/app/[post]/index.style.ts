@@ -141,8 +141,7 @@ export const BackToHome = styled(Link)`
   }
   &:hover {
     span {
-      background: var(--bd-primary-color);
-      background-clip: text;
+      color: var(--fg-muted-color);
     }
   }
   @media ${DEVICE_QUERY_MOBILE} {
@@ -155,23 +154,35 @@ export const BackToHome = styled(Link)`
 `
 
 export const Share = styled.div`
+  padding: 0;
+  border: 0;
   font-family: Neue Kaine;
   font-weight: 733;
   font-style: Bold;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.02em;
-  ${HoverStyle}
-  .active {
-    right: 0;
-  }
+  cursor: default;
+  background: transparent;
   span {
     color: #B2B6C2;
   }
-  &:hover {
-    span {
+
+  @media ${DEVICE_QUERY_MOBILE} {
+    ${HoverStyle}
+    gap: 4px;
+
+    .active {
+      right: 0;
+    }
+
+    &[aria-expanded='true'] picture {
+      visibility: hidden;
+    }
+
+    &:hover span,
+    &:focus-visible span {
       color: var(--bd-primary-color);
-      transition: var(--transition);
     }
   }
 `
@@ -225,15 +236,15 @@ export const TableOfContentsUl = styled.div`
 
 export const TableOfContentsLi = styled.div<{ depth?: number }>`
   padding-left: ${(props) => (props.depth && props.depth > 2 ? (props.depth - 2) * 16 : 0)}px;
-  color: ${(props) => (props.depth === 2 ? 'var(--fg-primary-color)' : 'var(--fg-subtle-color)')};
 `
 
 export const TableOfContentsLink = styled.a<{ depth?: number }>`
   display: block;
   text-decoration: none;
-  padding: 6px 12px;
+  padding: 12px 10px;
   border-radius: 4px;
   transition: all 0.2s ease;
+  color: var(--banner-bg-color);
   ${(props) => {
     return props.depth === 2 ?
       css`font-family: Neue Kaine;
@@ -252,8 +263,8 @@ export const TableOfContentsLink = styled.a<{ depth?: number }>`
   }}
 
   &:hover {
-    color: var(--bd-primary-color, #1F5AFF);
-    background-color: rgba(31, 90, 255, 0.08);
+    color: var(--link-color);
+    background-color: rgba(31, 90, 255, 0.1);
   }
 `
 

@@ -98,11 +98,18 @@ describe('Header', () => {
     const article = screen.getByRole('link', {
       name: 'What is a Crypto Wallet',
     })
+    const blogPromo = screen.getByRole('link', {
+      name: /Blog Just got your Keystone/,
+    })
 
     expect(getStarted.querySelector('img')).toBeTruthy()
     expect(getStarted.querySelector('svg')).toBeTruthy()
     expect(basicInformation).toBeTruthy()
     expect(blog?.textContent).toContain('Blog')
+    expect(blogPromo.getAttribute('href')).toBe('/')
+    expect(blogPromo.parentElement?.querySelector('img')).toBeTruthy()
+    expect(blogPromo.querySelector('svg')).toBeTruthy()
+    expect(blogPromo.textContent).toContain('Setup your device')
     expect(article.querySelector('svg')).toBeTruthy()
   })
 
@@ -173,6 +180,32 @@ describe('Header', () => {
       'button[aria-label="Close menu"]'
     )
     fireEvent.click(closeButton as HTMLButtonElement)
+    expect(document.getElementById('mobile-navigation')).toBeNull()
+    expect(document.body.style.overflow).toBe('')
+  })
+
+  it('closes the mobile menu after navigating from the Learn submenu', () => {
+    render(<Header />)
+
+    fireEvent.click(
+      document.querySelector<HTMLButtonElement>(
+        'button[aria-label="Open menu"]'
+      ) as HTMLButtonElement
+    )
+
+    const panel = document.getElementById('mobile-navigation') as HTMLElement
+    fireEvent.click(within(panel).getByRole('button', { name: 'Learn' }))
+
+    const learnPanel = document.getElementById(
+      'mobile-navigation'
+    ) as HTMLElement
+    const blogLink = learnPanel.querySelector<HTMLAnchorElement>(
+      'li a[href="/"]'
+    )
+
+    expect(blogLink).toBeTruthy()
+    fireEvent.click(blogLink as HTMLAnchorElement)
+
     expect(document.getElementById('mobile-navigation')).toBeNull()
     expect(document.body.style.overflow).toBe('')
   })

@@ -79,7 +79,7 @@ const Popover: FC<PopoverProps> = ({
               [{ click: 'onFocus' }[trigger]]() {
                 onHiddenPopover();
               },
-              [{ hover: 'onMouseLeave' }[trigger]]() {
+              [{ hover: 'onMouseLeave', click: 'onBlur' }[trigger]]() {
                 onHiddenPopover();
               },
             },
@@ -87,6 +87,10 @@ const Popover: FC<PopoverProps> = ({
           )}
         {cloneElement(children, {
           tabIndex: 1,
+          ...(trigger === 'click' && {
+            'aria-expanded': visible,
+            'aria-haspopup': true,
+          }),
           [{ hover: 'onMouseEnter', click: 'onClick' }[trigger]]() {
             if (trigger === 'click') {
               if (visible) {
