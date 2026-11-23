@@ -1,17 +1,23 @@
-import styled, {css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export const PostContainer = styled.div``
 
 export const TopBanner = styled.div`
   background-color: var(--banner-bg-color);
   display: flex;
-  padding: 80px 312px 66px 312px;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   padding-top: 80px;
   padding-bottom: 66px;
+  gap: 60px;
+
+  picture: {
+    max-inline-size: fit-content;
+  }
+
   picture > img {
     object-fit: cover;
   }
@@ -20,7 +26,7 @@ export const TopBanner = styled.div`
     padding: 48px 24px;
     width: auto;
     picture > img {
-      width: 100%;
+      width: 100vw;
       height: auto;
     }
   }
@@ -30,7 +36,6 @@ export const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 60px;
   @media ${DEVICE_QUERY_MOBILE} {
     margin-right: 0;
   }
@@ -137,7 +142,7 @@ export const BackToHome = styled(Link)`
     left: 0;
   }
   span {
-    color: #B2B6C2;
+    color: #b2b6c2;
   }
   &:hover {
     span {
@@ -165,7 +170,7 @@ export const Share = styled.div`
   cursor: default;
   background: transparent;
   span {
-    color: #B2B6C2;
+    color: #b2b6c2;
   }
 
   @media ${DEVICE_QUERY_MOBILE} {
@@ -246,20 +251,21 @@ export const TableOfContentsLink = styled.a<{ depth?: number }>`
   transition: all 0.2s ease;
   color: var(--banner-bg-color);
   ${(props) => {
-    return props.depth === 2 ?
-      css`font-family: Neue Kaine;
+    return props.depth === 2
+      ? css`
+          font-family: Neue Kaine;
           font-weight: 650;
           font-size: 18px;
           line-height: 26px;
           letter-spacing: 0.02em;
-          `
-      :
-      css`font-family: Open Sans;
+        `
+      : css`
+          font-family: Open Sans;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
           letter-spacing: 0.02em;
-          `
+        `
   }}
 
   &:hover {
@@ -273,15 +279,17 @@ export const BodyContainer = styled.div`
   justify-content: flex-start;
   max-width: 1580px;
   margin: 0 auto;
-  gap: 80px;
+  padding: 0 40px;
+  gap: 40px;
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 100%;
+    width: 100vw;
+    padding: 0;
   }
 `
 
 export const ArticleContainer = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 100%;
+    width: 100vw;
   }
 `
 
@@ -289,7 +297,7 @@ export const Summary = styled.div`
   margin: 20px 40px;
   padding: 24px;
   width: 880px;
-  background: #F5F7FC;
+  background: #f5f7fc;
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;
     margin: 20px 24px 0 24px;
@@ -304,7 +312,7 @@ export const SummaryTitle = styled.h2`
   font-size: 18px;
   line-height: 26px;
   letter-spacing: 2%;
-  color: #5D657A;
+  color: #5d657a;
   margin-bottom: 10px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
@@ -320,7 +328,7 @@ export const SummaryContent = styled.div`
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 2%;
-  color: #5D657A;
+  color: #5d657a;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
@@ -396,6 +404,8 @@ export const BodyText = styled.div`
     color: var(--link-color);
     text-decoration: none;
     position: relative;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     &::after {
       content: '';
       position: absolute;
