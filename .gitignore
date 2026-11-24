@@ -3,6 +3,5 @@ node_modules
 .yalc
 .DS_Store
 .env*
-pnpm-lock.yaml
 yalc.lock
 .vercel

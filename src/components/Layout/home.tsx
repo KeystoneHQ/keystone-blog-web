@@ -11,7 +11,6 @@ import {
 } from './home.style'
 import Image from 'next/image'
 import Categories from '@/components/Categories'
-import { IMAGE_CDN } from '@/constants/links'
 
 interface LayoutProps {
   children: ReactNode
@@ -29,7 +28,7 @@ export default function HomeLayout({ children, description }: LayoutProps) {
           <Description>{description}</Description>
         </TitleAndDescription>
         <Image
-          src={`${IMAGE_CDN}/homepage.png`}
+          src="/images/homepage.png"
           alt="keystone"
           height={350}
           width={540}

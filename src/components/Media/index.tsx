@@ -3,15 +3,15 @@ import { MediaWrapper } from './index.style'
 import {
   FacebookShareButton,
   LinkedinShareButton,
-  TwitterShareButton,
+  XShareButton as TwitterShareButton,
   TelegramShareButton,
 } from 'react-share'
 import Image from 'next/image'
 
 interface MediaProps {
   url: string,
-  setIsShowNotification: Function,
-  setMessage: Function,
+  setIsShowNotification: () => void,
+  setMessage: (_message: string) => void,
 }
 
 const Media: FC<MediaProps> = ({ url, setIsShowNotification, setMessage }) => {

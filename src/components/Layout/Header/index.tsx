@@ -54,6 +54,7 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState<MenuName | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState<MobileSection | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMenus = () => {
     setActiveMenu(null)
@@ -62,6 +63,16 @@ export default function Header() {
   }
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 64);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // A route change is an external navigation event; all open menus must reset.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     closeMenus()
   }, [pathname])
 
@@ -98,7 +109,7 @@ export default function Header() {
   }
 
   return (
-    <HeaderRoot onMouseLeave={() => setActiveMenu(null)}>
+    <HeaderRoot $isScrolled={isScrolled} onMouseLeave={() => setActiveMenu(null)}>
       <HeaderContainer>
         {mobileSection && (
           <MobileBackButton

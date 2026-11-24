@@ -44,6 +44,10 @@ export const PopoverContainer = styled.div.attrs<{ placement: string }>({
         right: 0;
         top: 33px;
       `,
+      mobileShare: css`
+        right: -10px;
+        top: 0;
+      `,
     })[props.placement]}
   margin: 0 auto;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);

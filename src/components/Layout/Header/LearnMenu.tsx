@@ -8,6 +8,11 @@ import {
   LearnBasicLink,
   LearnBasicList,
   LearnBasicTitle,
+  LearnBlogContent,
+  LearnBlogDescription,
+  LearnBlogLink,
+  LearnBlogPromo,
+  LearnBlogTitle,
   LearnDivider,
   LearnLayout,
   LearnLinkArrow,
@@ -42,21 +47,38 @@ export default function LearnMenu() {
 
       <LearnDivider aria-hidden="true" />
 
-      <LearnBasicInfo>
-        <LearnBasicTitle>{messages.basicInformation}</LearnBasicTitle>
-        <LearnBasicList>
-          {blogItems.map((item) => (
-            <li key={item.id}>
-              <LearnBasicLink href={item.href}>
-                <span>{item.label}</span>
-                <LearnLinkArrow aria-hidden="true">
-                  <ArrowRightIcon />
-                </LearnLinkArrow>
-              </LearnBasicLink>
-            </li>
-          ))}
-        </LearnBasicList>
-      </LearnBasicInfo>
+      <LearnBlogContent>
+        <LearnBlogPromo>
+          <Image src={mobileLearnItem.icon!} alt="" width={66} height={66} />
+          <LearnBlogLink href={mobileLearnItem.href}>
+            <LearnBlogTitle>
+              <span>{mobileLearnItem.label}</span>
+              <LearnLinkArrow aria-hidden="true">
+                <ArrowRightIcon />
+              </LearnLinkArrow>
+            </LearnBlogTitle>
+            <LearnBlogDescription>
+              {messages.blogDescription}
+            </LearnBlogDescription>
+          </LearnBlogLink>
+        </LearnBlogPromo>
+
+        <LearnBasicInfo>
+          <LearnBasicTitle>{messages.basicInformation}</LearnBasicTitle>
+          <LearnBasicList>
+            {blogItems.map((item) => (
+              <li key={item.id}>
+                <LearnBasicLink href={item.href}>
+                  <span>{item.label}</span>
+                  <LearnLinkArrow aria-hidden="true">
+                    <ArrowRightIcon />
+                  </LearnLinkArrow>
+                </LearnBasicLink>
+              </li>
+            ))}
+          </LearnBasicList>
+        </LearnBasicInfo>
+      </LearnBlogContent>
     </LearnLayout>
   )
 }

@@ -165,9 +165,9 @@ export const ContactTicketButton = styled(LayoutLink)`
   color: var(--layout-fg);
   background: transparent;
   font-family: var(--font-montserrat), Montserrat, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 22px;
+  line-height: 28px;
   white-space: nowrap;
   transition: var(--layout-transition);
 
@@ -177,15 +177,11 @@ export const ContactTicketButton = styled(LayoutLink)`
     color: var(--layout-accent-hover);
   }
 
-  &:hover,
-  &:focus-visible {
-    border-color: #969aa3;
-    background: rgba(255, 255, 255, 0.04);
-  }
-
   ${mobile} {
     min-height: 32px;
     margin-top: 40px;
+    font-size: 14px;
+    line-height: 22px;
   }
 `
 
@@ -213,6 +209,7 @@ export const FooterGroup = styled.section<{ $mobileOrder: number }>`
   }
 
   h2 {
+    font-family: var(--font-opensans), Open Sans, sans-serif;
     margin-bottom: 24px;
     color: var(--layout-fg-muted);
     font-size: 18px;

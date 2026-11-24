@@ -11,7 +11,6 @@ import Image from 'next/image'
 import ArrowRight from '../ArrowRight'
 import {
   DISCORD,
-  IMAGE_CDN,
   MAIN_SITE,
   REDDIT,
   TELEGRAM,
@@ -77,7 +76,7 @@ const MainSiteModule: FC = () => {
         </Explore>
       </MainSiteInfo>
       <Image
-        src={`${IMAGE_CDN}/k3.png`}
+        src="/images/k3.png"
         alt="keystone"
         width={320}
         height={320}

@@ -13,7 +13,7 @@ import { Container, PopoverContainer } from './index.style';
 
 interface PopoverProps {
   content: ReactNode,
-  children: ReactElement,
+  children: ReactElement<Record<string, unknown>>,
   placement?: string,
   transition?: string,
   trigger?: string,
@@ -27,7 +27,7 @@ const Popover: FC<PopoverProps> = ({
   trigger = 'hover',
   defaultOpen = false,
 }) => {
-  const popoverRef = useRef<HTMLDivElement>();
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   const [popoverOpen, setPopoverOpen] = useState(defaultOpen);
 
@@ -79,7 +79,7 @@ const Popover: FC<PopoverProps> = ({
               [{ click: 'onFocus' }[trigger]]() {
                 onHiddenPopover();
               },
-              [{ hover: 'onMouseLeave' }[trigger]]() {
+              [{ hover: 'onMouseLeave', click: 'onBlur' }[trigger]]() {
                 onHiddenPopover();
               },
             },
@@ -87,6 +87,10 @@ const Popover: FC<PopoverProps> = ({
           )}
         {cloneElement(children, {
           tabIndex: 1,
+          ...(trigger === 'click' && {
+            'aria-expanded': visible,
+            'aria-haspopup': true,
+          }),
           [{ hover: 'onMouseEnter', click: 'onClick' }[trigger]]() {
             if (trigger === 'click') {
               if (visible) {

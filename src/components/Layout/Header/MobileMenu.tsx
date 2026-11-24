@@ -41,10 +41,19 @@ export default function MobileMenu({
   onActiveChange,
   onNavigate,
 }: MobileMenuProps) {
+  const handleSubmenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof Element && event.target.closest('a')) {
+      onNavigate()
+    }
+  }
+
   if (active) {
     return (
       <MobilePanel id="mobile-navigation" $submenuOpen>
-        <MobileSubmenu id={`mobile-section-${active}`}>
+        <MobileSubmenu
+          id={`mobile-section-${active}`}
+          onClick={handleSubmenuClick}
+        >
           {content[active]}
         </MobileSubmenu>
       </MobilePanel>

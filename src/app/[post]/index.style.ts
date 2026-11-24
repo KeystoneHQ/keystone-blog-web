@@ -1,17 +1,23 @@
-import styled, {css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export const PostContainer = styled.div``
 
 export const TopBanner = styled.div`
   background-color: var(--banner-bg-color);
   display: flex;
-  padding: 80px 312px 66px 312px;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   padding-top: 80px;
   padding-bottom: 66px;
+  gap: 60px;
+
+  picture: {
+    max-inline-size: fit-content;
+  }
+
   picture > img {
     object-fit: cover;
   }
@@ -20,7 +26,7 @@ export const TopBanner = styled.div`
     padding: 48px 24px;
     width: auto;
     picture > img {
-      width: 100%;
+      width: 100vw;
       height: auto;
     }
   }
@@ -30,7 +36,6 @@ export const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 60px;
   @media ${DEVICE_QUERY_MOBILE} {
     margin-right: 0;
   }
@@ -137,12 +142,11 @@ export const BackToHome = styled(Link)`
     left: 0;
   }
   span {
-    color: #B2B6C2;
+    color: #b2b6c2;
   }
   &:hover {
     span {
-      background: var(--bd-primary-color);
-      background-clip: text;
+      color: var(--fg-muted-color);
     }
   }
   @media ${DEVICE_QUERY_MOBILE} {
@@ -155,23 +159,35 @@ export const BackToHome = styled(Link)`
 `
 
 export const Share = styled.div`
+  padding: 0;
+  border: 0;
   font-family: Neue Kaine;
   font-weight: 733;
   font-style: Bold;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.02em;
-  ${HoverStyle}
-  .active {
-    right: 0;
-  }
+  cursor: default;
+  background: transparent;
   span {
-    color: #B2B6C2;
+    color: #b2b6c2;
   }
-  &:hover {
-    span {
+
+  @media ${DEVICE_QUERY_MOBILE} {
+    ${HoverStyle}
+    gap: 4px;
+
+    .active {
+      right: 0;
+    }
+
+    &[aria-expanded='true'] picture {
+      visibility: hidden;
+    }
+
+    &:hover span,
+    &:focus-visible span {
       color: var(--bd-primary-color);
-      transition: var(--transition);
     }
   }
 `
@@ -210,7 +226,7 @@ export const TableOfContentsContainer = styled.div`
   width: 300px;
   margin-left: 40px;
   position: sticky;
-  top: 50px;
+  top: 84px;
   height: fit-content;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
@@ -225,35 +241,36 @@ export const TableOfContentsUl = styled.div`
 
 export const TableOfContentsLi = styled.div<{ depth?: number }>`
   padding-left: ${(props) => (props.depth && props.depth > 2 ? (props.depth - 2) * 16 : 0)}px;
-  color: ${(props) => (props.depth === 2 ? 'var(--fg-primary-color)' : 'var(--fg-subtle-color)')};
 `
 
 export const TableOfContentsLink = styled.a<{ depth?: number }>`
   display: block;
   text-decoration: none;
-  padding: 6px 12px;
+  padding: 12px 10px;
   border-radius: 4px;
   transition: all 0.2s ease;
+  color: var(--banner-bg-color);
   ${(props) => {
-    return props.depth === 2 ?
-      css`font-family: Neue Kaine;
+    return props.depth === 2
+      ? css`
+          font-family: Neue Kaine;
           font-weight: 650;
           font-size: 18px;
           line-height: 26px;
           letter-spacing: 0.02em;
-          `
-      :
-      css`font-family: Open Sans;
+        `
+      : css`
+          font-family: Open Sans;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
           letter-spacing: 0.02em;
-          `
+        `
   }}
 
   &:hover {
-    color: var(--bd-primary-color, #1F5AFF);
-    background-color: rgba(31, 90, 255, 0.08);
+    color: var(--link-color);
+    background-color: rgba(31, 90, 255, 0.1);
   }
 `
 
@@ -262,15 +279,17 @@ export const BodyContainer = styled.div`
   justify-content: flex-start;
   max-width: 1580px;
   margin: 0 auto;
-  gap: 80px;
+  padding: 0 40px;
+  gap: 40px;
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 100%;
+    width: 100vw;
+    padding: 0;
   }
 `
 
 export const ArticleContainer = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 100%;
+    width: 100vw;
   }
 `
 
@@ -278,7 +297,7 @@ export const Summary = styled.div`
   margin: 20px 40px;
   padding: 24px;
   width: 880px;
-  background: #F5F7FC;
+  background: #f5f7fc;
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;
     margin: 20px 24px 0 24px;
@@ -293,7 +312,7 @@ export const SummaryTitle = styled.h2`
   font-size: 18px;
   line-height: 26px;
   letter-spacing: 2%;
-  color: #5D657A;
+  color: #5d657a;
   margin-bottom: 10px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
@@ -309,7 +328,7 @@ export const SummaryContent = styled.div`
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 2%;
-  color: #5D657A;
+  color: #5d657a;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
@@ -336,6 +355,15 @@ export const BodyText = styled.div`
   --md-space-sm: 16px;
   --md-space-md: 24px;
   --md-space-lg: 32px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 80px;
+  }
 
   > *:first-child {
     margin-top: 0;
@@ -376,6 +404,8 @@ export const BodyText = styled.div`
     color: var(--link-color);
     text-decoration: none;
     position: relative;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     &::after {
       content: '';
       position: absolute;

@@ -4,7 +4,7 @@ import { layoutTokens } from '../styles/tokens'
 
 const mobile = '@media (max-width: 1000px)'
 
-export const HeaderRoot = styled.header`
+export const HeaderRoot = styled.header<{$isScrolled: boolean}>`
   ${layoutTokens}
   position: sticky;
   top: 0;
@@ -12,9 +12,20 @@ export const HeaderRoot = styled.header`
   height: var(--layout-header-height);
   color: var(--layout-fg);
   font-family: var(--font-open-sans), 'Open Sans', sans-serif;
-  background: rgba(17, 18, 20, 0.88);
+  background: transparent;
   border-bottom: 1px solid var(--layout-border);
-  backdrop-filter: blur(8px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: ${({ $isScrolled }) =>
+    $isScrolled ? 'rgba(17, 18, 20, 0.88)' : 'rgb(17, 18, 20)'};
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
 
   &,
   & * {
@@ -295,6 +306,7 @@ export const Dropdown = styled.div`
   background: rgba(17, 18, 20, 0.88);
   border-top: 1px solid var(--layout-border);
   border-bottom: 1px solid var(--layout-border);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   animation: layout-menu-in 180ms ease both;
 
@@ -482,7 +494,7 @@ export const ProductMenuLink = styled(LayoutLink)`
 
   &:hover,
   &:focus-visible {
-    color: var(--layout-fg);
+    color: #e0516e;
   }
 
   ${mobile} {
@@ -668,6 +680,8 @@ export const FeatureCard = styled(CardLink)`
 export const FeatureCardTitle = styled.span`
   display: inline-flex;
   align-items: center;
+  font-family: var(--font-montserrat);
+  font-weight: 600;
 `
 
 export const FeatureGrid = styled.div`
@@ -855,6 +869,83 @@ export const LearnDivider = styled.div`
   ${mobile} {
     display: none;
   }
+`
+
+export const LearnBlogContent = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+
+  ${mobile} {
+    display: block;
+  }
+`
+
+export const LearnBlogPromo = styled.section`
+  width: 274px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 40px;
+
+  > img {
+    width: 66px;
+    height: 66px;
+    margin-top: 16px;
+    margin-left: -10px;
+    object-fit: contain;
+  }
+
+  ${mobile} {
+    display: none;
+  }
+`
+
+export const LearnBlogLink = styled(LayoutLink)`
+  display: block;
+  color: var(--layout-fg-muted);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--layout-fg);
+  }
+`
+
+export const LearnBlogTitle = styled.span`
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+  transition: var(--layout-transition);
+
+  ${LearnLinkArrow} {
+    color: var(--layout-accent-hover);
+  }
+
+  ${LearnBlogLink}:hover &,
+  ${LearnBlogLink}:focus-visible & {
+    color: var(--layout-fg);
+  }
+
+  ${LearnBlogLink}:hover & ${LearnLinkArrow},
+  ${LearnBlogLink}:focus-visible & ${LearnLinkArrow} {
+    transform: translateX(6px);
+  }
+`
+
+export const LearnBlogDescription = styled.span`
+  margin-top: 8px;
+  display: block;
+  color: var(--layout-fg-subtle);
+  font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  white-space: pre-line;
 `
 
 export const LearnBasicInfo = styled.section`

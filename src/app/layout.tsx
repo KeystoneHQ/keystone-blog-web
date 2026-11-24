@@ -1,5 +1,5 @@
 import React from 'react'
-import 'gardevoir'
+import 'reseter.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import '../styles/global.css'
 import '../styles/fonts.css'
